@@ -7,9 +7,18 @@ if (isset($_POST["cidadeOrigem"]) && isset($_POST["cidadeDestino"]) && isset($_P
     $cidadeDestino = $_POST["cidadeDestino"];
     $distancia = $_POST["distancia"];
     $pedagios = $_POST["pedagios"];
-    $totalViagemBruto = ($pedagios * 9.40) +  ($distancia * 6);
-    $totalViagem = number_format((float)$totalViagemBruto, 2, ',' , '');  
+
+    $valorFrete = 0;
+
+    $valorfrete = $distancia * 6;
+
+    $valorfrete += $pedagios * 9.4;
+
+}else{
+    echo "Você não enviou os dados";
+    exit;
 }
+
 
 ?>
 
@@ -26,7 +35,7 @@ if (isset($_POST["cidadeOrigem"]) && isset($_POST["cidadeDestino"]) && isset($_P
 
 <body>
     <form method="POST" action="calcular.php">
-        <h1>Calcular Fretes</h1>
+        <p>Calcular Fretes</p>
 
             <label for="cidadeOrigem">
                 Cidade de Origem
@@ -49,7 +58,7 @@ if (isset($_POST["cidadeOrigem"]) && isset($_POST["cidadeDestino"]) && isset($_P
         </label>
 
 
-        <textarea id="total" cols="22" rows="4" readonly>A viagem de <?= $cidadeOrigem ?> para <?= $cidadeDestino ?> irá custar o valor total de R$<?= $totalViagem ?></textarea>
+        <p class="total">A viagem de <?= $cidadeOrigem ?> para <?= $cidadeDestino ?> irá custar o valor total de R$<em><?= number_format($valorFrete,2, ".", ".") ?></em></p>
 
     </form>
 
