@@ -14,6 +14,10 @@ if (isset($_POST["cidadeOrigem"]) && isset($_POST["cidadeDestino"]) && isset($_P
 
     $valorfrete += $pedagios * 9.4;
 
+    // $valorfrete = ($distancia * 6) + ($pedagios * 9.4);
+
+
+
 }else{
     echo "Você não enviou os dados";
     exit;
@@ -49,16 +53,16 @@ if (isset($_POST["cidadeOrigem"]) && isset($_POST["cidadeDestino"]) && isset($_P
 
         <label for="distancia">
             Distância em KM
-            <input type="number" min="0" id="distancia" name="distancia" value="<?= $distancia ?>" readonly>
+            <input id="distancia" name="distancia" value="<?= $distancia ?>" readonly>
         </label>
 
         <label for="pedagios">
             Quantidade de Pedágios
-            <input type="number" min="0" id="pedagios" name="pedagios" value="<?= $pedagios ?>" readonly>
+            <input  id="pedagios" name="pedagios" value="<?= $pedagios ?>" readonly>
         </label>
 
 
-        <p class="total">A viagem de <?= $cidadeOrigem ?> para <?= $cidadeDestino ?> irá custar o valor total de R$<em><?= number_format($valorFrete,2, ".", ".") ?></em></p>
+        <p class="total">A viagem de <?= $cidadeOrigem ?> à <?= $cidadeDestino ?> irá custar o valor total de R$<em><?= number_format($valorfrete,2, ".", ".") ?></em></p>
 
     </form>
 
